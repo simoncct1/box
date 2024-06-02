@@ -56,11 +56,15 @@ void setup() {
   clock_prescale_set(clock_div_1);
 #endif
   pixels.begin(); 
+  pixels2.begin();
 }
 
 
 
+
+
 void loop() {
+
 
   if (digitalRead(radioVolumeSwitchPin) == HIGH) {
     radioPower = LOW;
@@ -92,14 +96,15 @@ void loop() {
     for(int i = 0; i <= 13 ; i++){
     pixels.setPixelColor(i, pixels.Color(0,0,0));
     pixels.show(); 
-    pixels2.setPixelColor(i, pixels.Color(0,0,0));
+    pixels2.setPixelColor(i, pixels2.Color(0,0,0));
     pixels2.show();  // Send the updated pixel colors to the hardware.
     }
   } else if(radioFreq == 815){
     for(int i = 0; i <= 13 ; i++){
+    Serial.println("light it up");
     pixels.setPixelColor(i, pixels.Color(100, 30, 0));
     pixels.show(); 
-    pixels2.setPixelColor(i, pixels.Color(100, 30, 0));
+    pixels2.setPixelColor(i, pixels2.Color(100, 30, 0));
     pixels2.show();   // Send the updated pixel colors to the hardware.
     }
   }
